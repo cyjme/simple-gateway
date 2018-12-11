@@ -1,0 +1,299 @@
+definitions:
+  api.RouteGroupRequest:
+    properties:
+      name:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  api.RouteGroupResponse:
+    properties:
+      created:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      updated:
+        type: string
+    type: object
+  api.RouteRequest:
+    properties:
+      auth:
+        type: boolean
+      groupId:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      serverHost:
+        type: string
+      serverMethod:
+        type: string
+      serverPath:
+        type: string
+      serverPort:
+        type: integer
+      serverScheme:
+        type: string
+      status:
+        type: boolean
+    type: object
+  api.RouteResponse:
+    properties:
+      auth:
+        type: boolean
+      created:
+        type: string
+      groupId:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      serverHost:
+        type: string
+      serverMethod:
+        type: string
+      serverPath:
+        type: string
+      serverPort:
+        type: integer
+      serverScheme:
+        type: string
+      status:
+        type: boolean
+      updated:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /routeGroup:
+    get:
+      consumes:
+      - application/json
+      description: 获取路由分组
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.RouteGroupResponse'
+            type: array
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 获取路由分组
+      tags:
+      - 路由分组管理
+    post:
+      consumes:
+      - application/json
+      description: 创建路由分组
+      parameters:
+      - description: 请求参数
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.RouteGroupRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 创建路由分组
+      tags:
+      - 路由分组管理
+  /routeGroup/:
+    delete:
+      consumes:
+      - application/json
+      description: 创建路由分组
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 删除路由分组
+      tags:
+      - 路由分组管理
+    put:
+      consumes:
+      - application/json
+      description: 修改路由分组
+      parameters:
+      - description: 请求参数
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.RouteGroupRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 修改路由分组
+      tags:
+      - 路由分组管理
+  /routeGroup/id/routes:
+    get:
+      consumes:
+      - application/json
+      description: 根据 group_id 获取路由
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.RouteResponse'
+            type: array
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 根据 group_id 获取路由
+      tags:
+      - 路由管理
+  /routes:
+    post:
+      consumes:
+      - application/json
+      description: 创建路由
+      parameters:
+      - description: 请求参数
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.RouteRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 创建路由
+      tags:
+      - 路由管理
+  /routes/id:
+    delete:
+      consumes:
+      - application/json
+      description: 删除路由
+      parameters:
+      - {}
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 删除路由
+      tags:
+      - 路由管理
+    put:
+      consumes:
+      - application/json
+      description: 修改路由
+      parameters:
+      - description: 请求参数
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.RouteRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+        "500":
+          description: '{"msg": "error info"}'
+          schema:
+            type: string
+      summary: 修改路由
+      tags:
+      - 路由管理
+swagger: "2.0"

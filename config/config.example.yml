@@ -1,0 +1,16 @@
+http:
+  domain: "127.0.0.1"
+  port: 10000
+db:
+  host: "127.0.0.1"
+  port: "3306"
+  user: "root"
+  password: ""
+  name: "simple-gateway"
+redis:
+  addr: "127.0.0.1:6379"
+  password: ""
+  pool_size: 10
+
+secret:
+  auth_key: "auth_key"

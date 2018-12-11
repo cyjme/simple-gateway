@@ -1,0 +1,41 @@
+.flex-row-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.group-page {
+  background: white;
+  .header {
+    background: white;
+    height: 80px;
+    border: 1px solid #d1d1d1;
+    padding: 0 32px;
+    .flex-row-between;
+    align-items: center;
+    .title {
+      font-size: 28px;
+    }
+  }
+  .main-container {
+    padding: 32px;
+    .panel-box {
+      border-radius: 6px;
+      i {
+        line-height: 66px !important;
+      }
+      .panel-header {
+        line-height: 42px;
+        .flex-row-between;
+        .btn-group {
+          button {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+    .operate-record a {
+      padding: 0 5px;
+    }
+  }
+}
