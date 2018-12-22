@@ -1,14 +1,12 @@
 package gate_way
 
 import (
+	"github.com/cyjme/service-center/client"
+	"github.com/cyjme/service-center/service"
 	"log"
 	"simple-gateway/httprouter"
 	"simple-gateway/service/model"
 	routeService "simple-gateway/service/route"
-	"strings"
-
-	"github.com/cyjme/service-center/client"
-	"github.com/cyjme/service-center/service"
 )
 
 var Router *httprouter.Router
@@ -62,11 +60,12 @@ func LoadAllServiceNode() {
 	allServiceNode := service.ListNodeByServiceName("")
 	ServiceNode = make(map[string]NodeList)
 
-	for _, node := range allServiceNode {
-		arr := strings.Split(node.Key, "/")
-		serviceName := arr[1]
-		ServiceNode[serviceName] = append(ServiceNode[serviceName], node.Value)
+	for serviceName, nodes := range allServiceNode{
+		for _,node := range nodes{
+			ServiceNode[serviceName] = append(ServiceNode[serviceName], node.Url)
+		}
 	}
+
 	log.Println("Service Node", ServiceNode)
 }
 
